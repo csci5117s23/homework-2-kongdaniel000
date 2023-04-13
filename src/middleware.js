@@ -14,7 +14,6 @@ export default withClerkMiddleware((request) => {
     return NextResponse.next();
 });
  
-// Stop Middleware running on static files and public folder
 export const config = {
   matcher: [
     "/todos/:path*",

@@ -1,9 +1,6 @@
 import Head from 'next/head'
-import { useAuth } from '@clerk/nextjs';
-import { useRouter } from 'next/router';
+
 export default function ToDo({ Component, pageProps }) {
-    const router = useRouter();
-    const { userId } = useAuth();
     return (
         <>
             <Head>
