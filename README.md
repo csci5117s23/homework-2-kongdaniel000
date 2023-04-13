@@ -1,5 +1,7 @@
 # CSCI 5117 Spring 2023 -- Module 2 Homework
 
+REMOVE THIS LATER:
+npx next dev -p 8001
 
 Instructions can be [found on canvas](https://canvas.umn.edu/courses/355584/pages/homework-2)
 
