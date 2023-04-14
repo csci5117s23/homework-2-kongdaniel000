@@ -1,4 +1,4 @@
-import { SignIn } from "@clerk/nextjs";
+import { SignUp } from "@clerk/nextjs";
 import { useAuth } from '@clerk/nextjs';
 import { useRouter } from 'next/router';
 
@@ -8,7 +8,7 @@ export default function SignUpPage() {
 
     if(!userId) {
         return (
-            <SignIn path="/" routing="path" signUpUrl="/signup" redirectUrl="/todos"/>
+            <SignUp path="/signup" routing="path" signInUrl="/" redirectUrl="/todos"/>
         );
     }
     // redirect if logged in

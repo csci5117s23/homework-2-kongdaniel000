@@ -1,6 +1,9 @@
 import Head from 'next/head'
+import Link from 'next/link'
+import { useClerk } from "@clerk/clerk-react";
 
-export default function ToDo({ Component, pageProps }) {
+export default function ToDo() {
+    const { signOut } = useClerk();
     return (
         <>
             <Head>
@@ -13,6 +16,8 @@ export default function ToDo({ Component, pageProps }) {
                 <div>
                     <p>Test</p>
                     <p>This page should be visible now</p>
+                    {/* https://clerk.com/docs/authentication/sign-out */}
+                    <button onClick={() => signOut()}>Sign out</button>
                 </div>
             </main>
         </>

@@ -1,6 +1,24 @@
 import Head from 'next/head'
+import Link from 'next/link'
+import {useClerk} from "@clerk/clerk-react";
+import {useState, useEffect} from 'react';
 
-export default function ToDo({ Component, pageProps }) {
+export default function ToDo() {
+    const {signOut} = useClerk();
+    const [posts, setPosts] = useState([]);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const response = awaitfetch("https://backend-s11j.api.codehooks.io/dev", {
+                "method" : "GET",
+                "headers": {"x-apikey": "a81974f6-0e9b-41b1-938a-fcdefd2fa577"}
+            });
+            const data = await response.json();
+            setPosts(data);
+            // setLoading(false);
+        }
+    }, []);
+    
     return (
         <>
             <Head>
@@ -11,8 +29,9 @@ export default function ToDo({ Component, pageProps }) {
             </Head>
             <main>
                 <div>
-                    <p>Test</p>
-                    <p>This page should be visible now</p>
+                    <p>{posts}</p>
+                    {/* https://clerk.com/docs/authentication/sign-out */}
+                    <button onClick={() => signOut()}>Sign out</button>
                 </div>
             </main>
         </>
