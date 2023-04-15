@@ -16,8 +16,8 @@ export default withClerkMiddleware((request) => {
  
 export const config = {
   matcher: [
-    "todos/",
-    "todo/:path*",
-    "done"
+    "/todos/",
+    "/todo/:path*",
+    "/done"
   ],
 }
