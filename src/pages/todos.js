@@ -2,7 +2,6 @@ import Head from 'next/head';
 import Link from 'next/link.js';
 import {useAuth, useClerk} from "@clerk/clerk-react";
 import { useEffect, useState } from 'react';
-import CreateButton from './fetch/create.js';
 
 export default function ToDo() {
     const {signOut} = useClerk();
@@ -25,6 +24,25 @@ export default function ToDo() {
 
         fetchData();
     }, [loading]);
+
+    const createNew = async () => {
+        const content = document.getElementById("body").value;
+        if(content.length > 0) {
+            const body = '{"userId":"' + userId + '","body": "' + content + '"}';
+            console.log(body);
+            const response = await fetch(API_ENDPOINT, {
+                "method" : "POST",
+                "headers": {
+                    "Content-Type": "application/json",
+                    "x-apikey": "a81974f6-0e9b-41b1-938a-fcdefd2fa577",
+                },
+                "body": body,
+            });
+            setLoading(true);
+        } else {
+            window.alert("Please type something in the input box!");
+        }
+    }
     
     return (<>
         <Head>
@@ -35,15 +53,16 @@ export default function ToDo() {
         </Head>
         <main>
             <div>
-                {/* https://legacy.reactjs.org/docs/conditional-rendering.html */}
                 <ul>
                     {Object.values(posts).map(value => {
                         const id = value._id
                         return <li key = {id}><Link href={"/todo/" + id}>{value.body}</Link></li>
                     })}
                 </ul>
-                <CreateButton onClick={() => setLoading(true)}></CreateButton>
+                <input type="text" id="body" name="body" placeholder="New todo here"></input>
+                <button onClick={() => createNew()}>Create new todo!</button><br></br><br></br>
                 {/* https://clerk.com/docs/authentication/sign-out */}
+                <Link href="/done">Click here to go to see all finished items!</Link><br></br><br></br>
                 <button onClick={() => signOut()}>Sign out</button>
             </div>
         </main>

@@ -14,6 +14,7 @@ export default withClerkMiddleware((request) => {
     return NextResponse.next();
 });
  
+
 export const config = {
   matcher: [
     "/todos/:path*",

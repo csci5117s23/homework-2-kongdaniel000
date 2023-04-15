@@ -1,3 +1,5 @@
+import Head from 'next/head';
+import Link from 'next/link.js';
 import { useRouter } from "next/router";
 import { useEffect, useState } from 'react';
 
@@ -24,6 +26,13 @@ export default function TodoFull() {
     }, [loading]);
 
     return (<>
+        <Head>
+            <title>{content}</title>
+            <meta charSet="utf-8"/>
+            <meta name="viewport" content="width=device-width, initial-scale=1" />
+            <link rel="icon" href="/favicon.ico" />
+        </Head>
         <p>{content}</p>
+        <Link href="/todos">Click here to go back!</Link>
     </>)
 }
