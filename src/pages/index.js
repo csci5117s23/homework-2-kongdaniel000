@@ -3,7 +3,7 @@ import SignInPage from './login'
 
 const centerStyle = {
   "display": "flex",
-  "justify-content": "center",
+  "justifyContent": "center",
 };
 
 export default function Home() {
