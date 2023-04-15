@@ -8,6 +8,7 @@ export default function TodoFull() {
     const id = router.query.id;
     const [content, setContent] = useState("");
     const [loading, setLoading] = useState(true);
+    const [done, setDone] = useState(false);
     const [API_ENDPOINT] = [process.env.NEXT_PUBLIC_API_ENDPOINT];
 
     useEffect(() => {
@@ -19,11 +20,54 @@ export default function TodoFull() {
             });
             const data = await response.json();
             setContent(data[0]["body"]);
+            setDone(data[0]["done"]);
+            let doneConvert = "No";
+            if(done) {
+                doneConvert = "Yes";
+            }
+            const element = document.getElementById("done")
+            element.innerText = doneConvert;
             setLoading(false);
         };
 
         fetchData();
     }, [loading]);
+
+    const modifyContent = async () => {
+        const content = document.getElementById("body").value;
+        if(content.length > 0) {
+            const body = '{"body":"' + content + '"}';
+            let modUrl = API_ENDPOINT + id;
+            const response = await fetch(modUrl, {
+                "method" : "PATCH",
+                "headers": {
+                    "Content-Type": "application/json",
+                    "x-apikey": "a81974f6-0e9b-41b1-938a-fcdefd2fa577",
+                },
+                "body": body,
+            });
+        } else {
+            window.alert("Please type something in the input box!");
+        }
+    }
+
+    const modifyDone = async () => {
+        const done = document.getElementById("done").value;
+        let returnDone = false;
+        if(done === "Yes") {
+            returnDone = true;
+        }
+        const body = '{"done":' + returnDone + '}';
+        let modUrl = API_ENDPOINT + id;
+        const response = await fetch(modUrl, {
+            "method" : "PATCH",
+            "headers": {
+                "Content-Type": "application/json",
+                "x-apikey": "a81974f6-0e9b-41b1-938a-fcdefd2fa577",
+            },
+            "body": body,
+        });
+    }
 
     return (<>
         <Head>
@@ -32,7 +76,23 @@ export default function TodoFull() {
             <meta name="viewport" content="width=device-width, initial-scale=1" />
             <link rel="icon" href="/favicon.ico" />
         </Head>
-        <p>{content}</p>
-        <Link href="/todos">Click here to go back!</Link>
+        <main>
+            <h1>Modify the task by clicking and typing in the box!</h1>
+            <textarea id="body" defaultValue={content} style={{width: "250px", height: "250px"}}></textarea><br></br><br></br>
+            <button onClick={() => modifyContent()}>Save changes</button>
+            <p>Is this task done?<button id="done" onClick={() => {
+                const element = document.getElementById("done");
+                if(done) {
+                    element.innerText = "No";
+                    setDone(false);
+                }
+                else{
+                    element.innerText = "Yes";
+                    setDone(true);
+                }
+                modifyDone();
+            }}>No</button></p>
+            <Link href="/todos">Click here to go back!</Link>
+        </main>
     </>)
 }

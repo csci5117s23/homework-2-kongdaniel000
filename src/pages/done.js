@@ -37,7 +37,7 @@ export default function ToDo() {
                 <ul>
                     {Object.values(posts).map(value => {
                         const id = value._id
-                        return <li key = {id}><Link href={"/todo/" + id}>{value.body}</Link></li>
+                        return <li key = {id}><Link href={"/todo/" + id}>{value.body.slice(0,30)}</Link></li>
                     })}
                 </ul>
                 <input type="text" id="body" name="body" placeholder="New todo here"></input><br></br><br></br>
