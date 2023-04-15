@@ -8,7 +8,6 @@ export default function TodoFull() {
     const id = router.query.id;
     const [content, setContent] = useState("");
     const [loading, setLoading] = useState(true);
-    const [done, setDone] = useState(false);
     const [API_ENDPOINT] = [process.env.NEXT_PUBLIC_API_ENDPOINT];
 
     useEffect(() => {
@@ -20,9 +19,8 @@ export default function TodoFull() {
             });
             const data = await response.json();
             setContent(data[0]["body"]);
-            setDone(data[0]["done"]);
             let doneConvert = "No";
-            if(done) {
+            if(data[0]["done"]) {
                 doneConvert = "Yes";
             }
             const element = document.getElementById("done")
@@ -52,7 +50,7 @@ export default function TodoFull() {
     }
 
     const modifyDone = async () => {
-        const done = document.getElementById("done").value;
+        const done = document.getElementById("done").innerText;
         let returnDone = false;
         if(done === "Yes") {
             returnDone = true;
@@ -80,15 +78,13 @@ export default function TodoFull() {
             <h1>Modify the task by clicking and typing in the box!</h1>
             <textarea id="body" defaultValue={content} style={{width: "250px", height: "250px"}}></textarea><br></br><br></br>
             <button onClick={() => modifyContent()}>Save changes</button>
-            <p>Is this task done?<button id="done" onClick={() => {
+            <p>Is this task done? <button id="done" onClick={() => {
                 const element = document.getElementById("done");
-                if(done) {
+                if(element.innerText === "Yes") {
                     element.innerText = "No";
-                    setDone(false);
                 }
                 else{
                     element.innerText = "Yes";
-                    setDone(true);
                 }
                 modifyDone();
             }}>No</button></p>
