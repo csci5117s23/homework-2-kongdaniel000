@@ -4,7 +4,7 @@ import {object, date, string, boolean, /*number*/} from 'yup';
 
 const toDoYup = object({
   // id: number().required(), // unique identifier for todo object, apparently not required because of _id
-  userToken: string().required(), // user token (from Clerk) of author of todo object
+  userId: string().required(), // user token (from Clerk) of author of todo object
   body: string().required(), // content of to do
   // category: string().required(), // category of to do (might not implement?)
   done: boolean().default(false).required(), // representation if to do is finished or not
