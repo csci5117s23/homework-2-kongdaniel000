@@ -52,6 +52,7 @@ export default function ToDo() {
             <link rel="icon" href="/favicon.ico" />
         </Head>
         <main>
+            <h1>These are items that still need to be done!</h1>
             <div>
                 <ul>
                     {Object.values(posts).map(value => {

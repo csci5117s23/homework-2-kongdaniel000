@@ -33,12 +33,13 @@ export default function ToDo() {
             <link rel="icon" href="/favicon.ico" />
         </Head>
         <main>
+            <h1>These are items that are finished!</h1>
             <div>
                 <ul>
                     {Object.values(posts).map(value => {
                         const id = value._id
                         if(value.done) {
-                            return <li key = {id}><Link href={"/todo/" + id}>{value.body.slice(0,30)}</Link></li>
+                            return <li key = {id}><Link href={"/todo/" + id}>{"✓"+value.body.slice(0,30)}</Link></li>
                         }
                     })}
                 </ul>
