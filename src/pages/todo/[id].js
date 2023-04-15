@@ -76,7 +76,7 @@ export default function TodoFull() {
         </Head>
         <main>
             <h1>Modify the task by clicking and typing in the box!</h1>
-            <textarea id="body" defaultValue={content} style={{width: "250px", height: "250px"}}></textarea><br></br><br></br>
+            <textarea id="body" defaultValue={content}></textarea><br></br><br></br>
             <button onClick={() => modifyContent()}>Save changes</button>
             <p>Is this task done? <button id="done" onClick={() => {
                 const element = document.getElementById("done");

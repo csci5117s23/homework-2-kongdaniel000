@@ -4,11 +4,11 @@ import { useRouter } from 'next/router';
 
 export default function SignUpPage() {
     const router = useRouter();
-    const { isLoaded, userId, sessionId, getToken } = useAuth();
+    const {userId} = useAuth();
 
     if(!userId) {
         return (
-            <SignIn path="/" routing="path" signUpUrl="/signup" redirectUrl="/todos"/>
+            <SignIn routing="path" path="/" redirectUrl="/todos"/>
         );
     }
     // redirect if logged in
