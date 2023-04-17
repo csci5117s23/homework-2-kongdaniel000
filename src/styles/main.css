@@ -3,6 +3,11 @@
 main {
     font-family: "Inter";
     font-size: 2em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-right: auto;
 }
 
 input {
@@ -17,4 +22,62 @@ textarea {
 
 button {
     font-size: 1em;
+}
+
+ul {
+    list-style-type: none;
+}
+
+ul li:nth-child(odd), li:nth-child(odd) a{
+    background-color: #F6DF8E;
+    color: #0054C2;
+}
+
+ul li:nth-child(even), li:nth-child(even) a{
+    background-color: #7100AD;
+    color: #FF9F38;
+}
+
+li {
+    padding: 10px;
+    border-radius: 10px;
+}
+
+/* https://www.geeksforgeeks.org/how-to-resize-list-style-image-in-css/ */
+.done {
+    padding: 10px 40px;
+    background-image: url("Checkmark.svg");
+    background-repeat: no-repeat;
+    background-position: left center;
+    background-size: 30px;
+}
+
+a {
+    color: blue;
+    text-decoration: none;
+}
+
+.signout {
+    margin: auto;
+    background-color: red;
+    color: white;
+    border-radius: 10px;
+    border-width: 4px;
+    margin-left: 40%;
+}
+
+.no {
+    margin: auto;
+    background-color: red;
+    color: white;
+    border-radius: 10px;
+    border-width: 4px;
+}
+
+.yes {
+    margin: auto;
+    background-color: green;
+    color: white;
+    border-radius: 10px;
+    border-width: 4px;
 }

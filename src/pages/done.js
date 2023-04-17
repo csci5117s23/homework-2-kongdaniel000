@@ -34,18 +34,18 @@ export default function ToDo() {
         </Head>
         <main>
             <h1>These are items that are finished!</h1>
+            <h2>Click on the items to see their full text and modify them!</h2>
             <div>
                 <ul>
                     {Object.values(posts).map(value => {
                         const id = value._id
                         if(value.done) {
-                            return <li key = {id}><Link href={"/todo/" + id}>{"✓"+value.body.slice(0,30)}</Link></li>
+                            return <li className="done" key = {id}><Link href={"/todo/" + id}>{value.body.slice(0,30)}</Link></li>
                         }
                     })}
                 </ul>
-                <input type="text" id="body" name="body" placeholder="New todo here"></input><br></br><br></br>
                 <Link href="/todos">Click here to go to see all unfinished items!</Link><br></br><br></br>
-                <button onClick={() => signOut()}>Sign out</button>
+                <button className="signout" onClick={() => signOut()}>Sign out</button>
             </div>
         </main>
     </>)

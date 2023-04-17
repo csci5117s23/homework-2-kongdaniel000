@@ -53,6 +53,7 @@ export default function ToDo() {
         </Head>
         <main>
             <h1>These are items that still need to be done!</h1>
+            <h2>Click on the items to see their full text and modify them!</h2>
             <div>
                 <ul>
                     {Object.values(posts).map(value => {
@@ -66,7 +67,7 @@ export default function ToDo() {
                 <button onClick={() => createNew()}>Create new todo!</button><br></br><br></br>
                 {/* https://clerk.com/docs/authentication/sign-out */}
                 <Link href="/done">Click here to go to see all finished items!</Link><br></br><br></br>
-                <button onClick={() => signOut()}>Sign out</button>
+                <button className="signout" onClick={() => signOut()}>Sign out</button>
             </div>
         </main>
     </>)

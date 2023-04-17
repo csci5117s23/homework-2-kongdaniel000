@@ -20,10 +20,11 @@ export default function TodoFull() {
             const data = await response.json();
             setContent(data[0]["body"]);
             let doneConvert = "No";
+            const element = document.getElementById("done")
             if(data[0]["done"]) {
                 doneConvert = "Yes";
+                element.className = 'yes';
             }
-            const element = document.getElementById("done")
             element.innerText = doneConvert;
             setLoading(false);
         };
@@ -77,14 +78,16 @@ export default function TodoFull() {
         <main>
             <h1>Modify the task by clicking and typing in the box!</h1>
             <textarea id="body" defaultValue={content}></textarea><br></br><br></br>
-            <button onClick={() => modifyContent()}>Save changes</button>
-            <p>Is this task done? <button id="done" onClick={() => {
+            <button className='yes' onClick={() => modifyContent()}>Save changes</button>
+            <p>Is this task done? <button className='no' id="done" onClick={() => {
                 const element = document.getElementById("done");
                 if(element.innerText === "Yes") {
                     element.innerText = "No";
+                    element.className ='no'
                 }
                 else{
                     element.innerText = "Yes";
+                    element.className ='yes'
                 }
                 modifyDone();
             }}>No</button></p>
