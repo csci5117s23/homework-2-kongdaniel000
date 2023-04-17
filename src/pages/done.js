@@ -49,9 +49,7 @@ export default function ToDo() {
                 <Link href="/todos">Click here to go to see all unfinished items!</Link><br></br><br></br>
                 <button className="signout" onClick={async () => {
                     const val = await signOut();
-                    if(val) {
-                        router.push({pathname:"/"});
-                    }}}>Sign out</button>
+                    router.push({pathname:"/"});}}>Sign out</button>
             </div>
         </main>
     </>)
