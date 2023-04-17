@@ -72,7 +72,7 @@ export default function ToDo() {
                 {/* https://clerk.com/docs/authentication/sign-out */}
                 <Link href="/done">Click here to go to see all finished items!</Link><br></br><br></br>
                 <button className="signout" onClick={async () => {
-                    await signOut();
+                    while(!(await signOut()));
                     router.push({pathname:"/"});}}>Sign out</button>
             </div>
         </main>

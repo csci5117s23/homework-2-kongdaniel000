@@ -48,7 +48,7 @@ export default function ToDo() {
                 </ul>
                 <Link href="/todos">Click here to go to see all unfinished items!</Link><br></br><br></br>
                 <button className="signout" onClick={async () => {
-                    await signOut();
+                    while(!(await signOut()));
                     router.push({pathname:"/"});}}>Sign out</button>
             </div>
         </main>
