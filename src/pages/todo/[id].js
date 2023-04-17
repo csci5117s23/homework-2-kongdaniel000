@@ -35,7 +35,8 @@ export default function TodoFull() {
     const modifyContent = async () => {
         const content = document.getElementById("body").value;
         if(content.length > 0) {
-            const body = '{"body":"' + content + '"}';
+            const body = ('{"body":"' + content + '"}').replaceAll("\n", "\\n");;
+            alert(body);
             let modUrl = API_ENDPOINT + id;
             const response = await fetch(modUrl, {
                 "method" : "PATCH",
