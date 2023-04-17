@@ -7,7 +7,6 @@ import { useRouter } from 'next/router';
 export default function ToDo() {
     const {signOut} = useClerk();
     const {userId} = useAuth();
-    const router = useRouter();
     const [posts, setPosts] = useState([]);
     const [loading, setLoading] = useState(true);
     const [API_ENDPOINT, API_KEY] = [process.env.NEXT_PUBLIC_API_ENDPOINT, process.env.COHO_SECRET_API_KEY];
