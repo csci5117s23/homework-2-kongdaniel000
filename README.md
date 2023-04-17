@@ -1,9 +1,5 @@
 # CSCI 5117 Spring 2023 -- Module 2 Homework
 
-## Extra info
-* My middleware function works when deployed on localhost, but Netlify seems to not like them for some reason and throws them away? (Which is why sign out doesn't redirect on Netlify.)
-![image](public/screenshot.png)
-
 Instructions can be [found on canvas](https://canvas.umn.edu/courses/355584/pages/homework-2)
 
 Please fill out all of the following sections to help us grade your submission:

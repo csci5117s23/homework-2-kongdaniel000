@@ -2,10 +2,12 @@ import Head from 'next/head';
 import Link from 'next/link.js';
 import {useAuth, useClerk} from "@clerk/clerk-react";
 import { useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
 
 export default function ToDo() {
     const {signOut} = useClerk();
     const {userId} = useAuth();
+    const router = useRouter();
     const [posts, setPosts] = useState([]);
     const [loading, setLoading] = useState(true);
     const [API_ENDPOINT, API_KEY] = [process.env.NEXT_PUBLIC_API_ENDPOINT, process.env.COHO_SECRET_API_KEY];
@@ -67,7 +69,9 @@ export default function ToDo() {
                 <button onClick={() => createNew()}>Create new todo!</button><br></br><br></br>
                 {/* https://clerk.com/docs/authentication/sign-out */}
                 <Link href="/done">Click here to go to see all finished items!</Link><br></br><br></br>
-                <button className="signout" onClick={() => signOut()}>Sign out</button>
+                <button className="signout" onClick={() => {
+                    router.push({pathname:"/todos"}); 
+                    signOut()}}>Sign out</button>
             </div>
         </main>
     </>)
