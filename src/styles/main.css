@@ -81,3 +81,17 @@ a {
     border-radius: 10px;
     border-width: 4px;
 }
+
+.yes:hover{
+    box-shadow: 0px 5px 10px green;
+    cursor:pointer;
+}
+
+.no:hover, .signout:hover {
+    box-shadow: 0px 5px 10px red;
+    cursor:pointer;
+}
+
+.no:active, .signout:active, .yes:active{
+    color:rgb(161, 161, 161);
+}

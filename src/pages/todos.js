@@ -28,7 +28,9 @@ export default function ToDo() {
     }, [loading]);
 
     const createNew = async () => {
-        const content = document.getElementById("body").value;
+        const element = document.getElementById("body");
+        const content = element.value;
+        element.value = "";
         if(content.length > 0) {
             const body = '{"userId":"' + userId + '","body": "' + content + '"}';
             console.log(body);
@@ -66,7 +68,7 @@ export default function ToDo() {
                     })}
                 </ul>
                 <input type="text" id="body" name="body" placeholder="New todo here"></input>
-                <button onClick={() => createNew()}>Create new todo!</button><br></br><br></br>
+                <button className='yes' onClick={() => createNew()}>Create new todo!</button><br></br><br></br>
                 {/* https://clerk.com/docs/authentication/sign-out */}
                 <Link href="/done">Click here to go to see all finished items!</Link><br></br><br></br>
                 <button className="signout" onClick={() => {
