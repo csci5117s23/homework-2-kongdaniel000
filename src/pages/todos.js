@@ -72,8 +72,8 @@ export default function ToDo() {
                 {/* https://clerk.com/docs/authentication/sign-out */}
                 <Link href="/done">Click here to go to see all finished items!</Link><br></br><br></br>
                 <button className="signout" onClick={() => {
-                    router.push({pathname:"/"}); 
-                    signOut()}}>Sign out</button>
+                    signOut()
+                    router.push({pathname:"/"});}}>Sign out</button>
             </div>
         </main>
     </>)
