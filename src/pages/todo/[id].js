@@ -36,7 +36,6 @@ export default function TodoFull() {
         const content = document.getElementById("body").value;
         if(content.length > 0) {
             const body = ('{"body":"' + content + '"}').replaceAll("\n", "\\n");;
-            alert(body);
             let modUrl = API_ENDPOINT + id;
             const response = await fetch(modUrl, {
                 "method" : "PATCH",
@@ -46,6 +45,7 @@ export default function TodoFull() {
                 },
                 "body": body,
             });
+            document.getElementById("change").innerText = "Changes saved!";
         } else {
             window.alert("Please type something in the input box!");
         }
@@ -79,7 +79,7 @@ export default function TodoFull() {
         <main>
             <h1>Modify the task by clicking and typing in the box!</h1>
             <textarea id="body" defaultValue={content}></textarea><br></br><br></br>
-            <button className='yes' onClick={() => modifyContent()}>Save changes</button>
+            <button className='yes' id="change" onClick={() => modifyContent()}>Save changes</button>
             <p>Is this task done? <button className='no' id="done" onClick={() => {
                 const element = document.getElementById("done");
                 if(element.innerText === "Yes") {
